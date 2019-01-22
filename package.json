@@ -1,6 +1,6 @@
 {
   "name": "cf-quick-start",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "helper tool for create javascript apps",
   "main": "cli.js",
   "scripts": {
