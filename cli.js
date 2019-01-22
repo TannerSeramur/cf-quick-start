@@ -1,4 +1,4 @@
-'use strict';
+#!/usr/bin/env node
 
 const chalk = require('chalk');
 const clear = require('clear');
