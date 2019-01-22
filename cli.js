@@ -4,7 +4,10 @@ const chalk = require('chalk');
 const clear = require('clear');
 const figlet = require('figlet');
 const inquirer  = require('./lib/inquirer');
-var fs = require('fs');
+const fs = require('fs');
+// const path = require('path');ls
+
+const fse = require('fs-extra');
 
 clear();
 console.log(
@@ -28,9 +31,9 @@ const run = async () => {
   const credentials = await inquirer.cfQuickStartQuestions();
   console.log(credentials);
   createDirectory(credentials.name);
-  whichBuild(credentials.build);
+  whichBuild(credentials);
   whichLicense(credentials.license);
-  
+  // copyTemplate('./templates/app.js', './credentials.name');
 
 };
 
@@ -43,14 +46,14 @@ function createDirectory(dir){
 }
 
 function whichBuild(choice){
-  switch(choice){
+  switch(choice.build){
   case 'Express Server':
     // do this 
-    console.log('building express server');
+    copyFiles(`./templates/express-server`, `./${choice.name}`);
     break;
   case 'API-Server':
     // do this
-    console.log('building api server');
+    copyFiles(`./templates/api-server`, `./${choice.name}`);
     break; 
   }
 }
@@ -63,3 +66,10 @@ function whichLicense(choice){
     break;
   }
 }
+
+function copyFiles(from, to){
+  fse.copy(from, to, (err) => {
+    if (err) throw err;
+  });
+}
+
