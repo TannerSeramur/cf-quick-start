@@ -3,6 +3,7 @@
   "version": "1.0.1",
   "description": "helper tool for create javascript apps",
   "main": "cli.js",
+  "bin": "./cli.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
