@@ -9,7 +9,6 @@ const fse = require('fs-extra');
 
 clear();
 console.log(chalk.white('-'));
-console.log('⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ');
 console.log(
   chalk.red(
     figlet.textSync('Code Fellows')
@@ -20,7 +19,6 @@ console.log(
     figlet.textSync('Quick Start', { horizontalLayout: 'full' })
   )
 );
-console.log('⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️');
 
 const run = async () => {
   const credentials = await inquirer.cfQuickStartQuestions();
@@ -33,12 +31,11 @@ const run = async () => {
 
 run();
 
+// Helper Functions
 function createDirectory(dir){
   if (!fs.existsSync(dir)){
     fs.mkdirSync(`./${dir}`);
   }
-  console.log('create directory function works');
-  
 }
 
 function whichBuild(choice){
@@ -51,7 +48,10 @@ function whichBuild(choice){
     break;
   case 'React-App':
     copyFiles(`${__dirname}/templates/react-app`, `./${choice.name}`);
-    break;  
+    break; 
+  case 'Socket Server': 
+    copyFiles(`${__dirname}/templates/socket- server`, `./${choice.name}`);
+    break;
   }
 }
 
