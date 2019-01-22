@@ -40,19 +40,22 @@ function createDirectory(dir){
   if (!fs.existsSync(dir)){
     fs.mkdirSync(`./${dir}`);
   }
+  console.log('create directory function works');
+  
 }
 
 function whichBuild(choice){
   switch(choice.build){
   case 'Express Server':
     // do this 
-    copyFiles(`./templates/express-server`, `./${choice.name}`);
+    copyFiles(`${__dirname}templates/express-server`, `./${choice.name}`);
     break;
   case 'API-Server':
     // do this
-    copyFiles(`./templates/api-server`, `./${choice.name}`);
+    copyFiles(`${__dirname}/templates/api-server`, `./${choice.name}`);
     break; 
   }
+  console.log('which build function works');
 }
 
 function whichLicense(choice){
@@ -68,5 +71,7 @@ function copyFiles(from, to){
   fse.copy(from, to, (err) => {
     if (err) throw err;
   });
+  console.log('copyFiles works');
+  
 }
 
