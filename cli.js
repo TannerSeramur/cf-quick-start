@@ -10,6 +10,8 @@ const fs = require('fs');
 const fse = require('fs-extra');
 
 clear();
+console.log(chalk.white('----------------'));
+console.log('⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ');
 console.log(
   chalk.red(
     figlet.textSync('Code Fellows')
@@ -20,12 +22,7 @@ console.log(
     figlet.textSync('Quick Start', { horizontalLayout: 'full' })
   )
 );
-console.log(
-  chalk.yellow(
-    figlet.textSync('')
-  )
-);
-
+console.log('⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ');
 
 const run = async () => {
   const credentials = await inquirer.cfQuickStartQuestions();
