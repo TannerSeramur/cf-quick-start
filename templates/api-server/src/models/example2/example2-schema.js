@@ -1,27 +1,27 @@
 'use strict';
 
-const players = require('../players/players-schema.js');
+const example = require('../example/example-schema.js');
 const mongoose = require('mongoose');
 require('mongoose-schema-jsonschema')(mongoose);
 
-const teams = mongoose.Schema({
+const example2 = mongoose.Schema({
   name: { type:String, required:true },
 }, { toObject:{virtuals:true}, toJSON:{virtuals:true} });
 
-teams.virtual('players', {
-  ref: 'players',
+example2.virtual('example', {
+  ref: 'exampe',
   localField: 'name',
-  foreignField: 'team',
+  foreignField: 'group',
   justOne:false,
 });
 
-teams.pre('find', function() {
+example2.pre('find', function() {
   try {
-    this.populate('players');
+    this.populate('example');
   }
   catch(e) {
     console.error('Find Error', e);
   }
 });
 
-module.exports = mongoose.model('teams', teams);
+module.exports = mongoose.model('example2', example2);
