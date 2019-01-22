@@ -50,8 +50,10 @@ function whichBuild(choice){
     copyFiles(`${__dirname}/templates/react-app`, `./${choice.name}`);
     break; 
   case 'Socket Server': 
-    copyFiles(`${__dirname}/templates/socket- server`, `./${choice.name}`);
+    copyFiles(`${__dirname}/templates/socket-server`, `./${choice.name}`);
     break;
+  case 'Just the Config Files, Please':
+    copyFiles(`${__dirname}/templates/config-files`, `./${choice.name}`);
   }
 }
 
