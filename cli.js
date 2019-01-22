@@ -71,3 +71,4 @@ function copyFiles(from, to){
   });
 }
 
+module.exports = {createDirectory, whichBuild};
