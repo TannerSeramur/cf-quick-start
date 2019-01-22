@@ -1,14 +1,13 @@
 {
   "name": "cf-quick-start",
-  "version": "1.0.1",
+  "version": "1.0.6",
   "description": "helper tool for create javascript apps",
   "main": "cli.js",
-  "bin": "./cli.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "bin": {
     "cf-quick-start": "./cli.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Tanner, Ryan, Becca, Jared",
   "license": "MIT",
@@ -25,5 +24,9 @@
     "minimist": "^1.2.0",
     "simple-git": "^1.107.0",
     "touch": "^3.1.0"
-  }
+  },
+  "files": [
+    "templates/",
+    "lib/"
+  ]
 }

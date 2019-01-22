@@ -5,11 +5,10 @@ const clear = require('clear');
 const figlet = require('figlet');
 const inquirer  = require('./lib/inquirer');
 const fs = require('fs');
-// const path = require('path');ls
-
 const fse = require('fs-extra');
 
 clear();
+console.log(chalk.white('-'));
 console.log(
   chalk.red(
     figlet.textSync('Code Fellows')
@@ -20,12 +19,6 @@ console.log(
     figlet.textSync('Quick Start', { horizontalLayout: 'full' })
   )
 );
-console.log(
-  chalk.yellow(
-    figlet.textSync('')
-  )
-);
-
 
 const run = async () => {
   const credentials = await inquirer.cfQuickStartQuestions();
@@ -33,12 +26,12 @@ const run = async () => {
   createDirectory(credentials.name);
   whichBuild(credentials);
   whichLicense(credentials.license);
-  // copyTemplate('./templates/app.js', './credentials.name');
 
 };
 
 run();
 
+// Helper Functions
 function createDirectory(dir){
   if (!fs.existsSync(dir)){
     fs.mkdirSync(`./${dir}`);
@@ -48,20 +41,23 @@ function createDirectory(dir){
 function whichBuild(choice){
   switch(choice.build){
   case 'Express Server':
-    // do this 
-    copyFiles(`./templates/express-server`, `./${choice.name}`);
+    copyFiles(`${__dirname}/templates/express-server`, `./${choice.name}`);
     break;
   case 'API-Server':
-    // do this
-    copyFiles(`./templates/api-server`, `./${choice.name}`);
+    copyFiles(`${__dirname}/templates/api-server`, `./${choice.name}`);
+    break;
+  case 'React-App':
+    copyFiles(`${__dirname}/templates/react-app`, `./${choice.name}`);
     break; 
+  case 'Socket Server': 
+    copyFiles(`${__dirname}/templates/socket- server`, `./${choice.name}`);
+    break;
   }
 }
 
 function whichLicense(choice){
   switch(choice){
   case 'MIT':
-    // do this
     console.log('using MIT License');
     break;
   }
