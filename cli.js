@@ -5,12 +5,10 @@ const clear = require('clear');
 const figlet = require('figlet');
 const inquirer  = require('./lib/inquirer');
 const fs = require('fs');
-// const path = require('path');ls
-
 const fse = require('fs-extra');
 
 clear();
-console.log(chalk.white('----------------'));
+console.log(chalk.white('-'));
 console.log('⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ ');
 console.log(
   chalk.red(
@@ -30,7 +28,6 @@ const run = async () => {
   createDirectory(credentials.name);
   whichBuild(credentials);
   whichLicense(credentials.license);
-  // copyTemplate('./templates/app.js', './credentials.name');
 
 };
 
@@ -47,21 +44,20 @@ function createDirectory(dir){
 function whichBuild(choice){
   switch(choice.build){
   case 'Express Server':
-    // do this 
-    copyFiles(`${__dirname}templates/express-server`, `./${choice.name}`);
+    copyFiles(`${__dirname}/templates/express-server`, `./${choice.name}`);
     break;
   case 'API-Server':
-    // do this
     copyFiles(`${__dirname}/templates/api-server`, `./${choice.name}`);
-    break; 
+    break;
+  case 'React-App':
+    copyFiles(`${__dirname}/templates/react-app`, `./${choice.name}`);
+    break;  
   }
-  console.log('which build function works');
 }
 
 function whichLicense(choice){
   switch(choice){
   case 'MIT':
-    // do this
     console.log('using MIT License');
     break;
   }
@@ -71,7 +67,5 @@ function copyFiles(from, to){
   fse.copy(from, to, (err) => {
     if (err) throw err;
   });
-  console.log('copyFiles works');
-  
 }
 
