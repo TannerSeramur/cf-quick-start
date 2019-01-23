@@ -1,0 +1,15 @@
+{
+  "name": "<project name>",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cf401-api-server": "^1.0.2"
+  }
+}
