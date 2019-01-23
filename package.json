@@ -17,6 +17,8 @@
     "clear": "^0.1.0",
     "clui": "^0.3.6",
     "configstore": "^4.0.0",
+    "directory-tree": "^2.2.1",
+    "eslint": "^5.12.1",
     "figlet": "^1.2.1",
     "fs-extra": "^7.0.1",
     "github": "^14.0.0",
