@@ -6,6 +6,8 @@ const figlet = require('figlet');
 const inquirer  = require('./lib/inquirer');
 const fs = require('fs');
 const fse = require('fs-extra');
+const githubQ   = require('./lib/githubQ');
+const github = require('./lib/github');
 
 clear();
 console.log(chalk.white('-'));
@@ -20,13 +22,35 @@ console.log(
   )
 );
 
+
+
 const run = async () => {
   const credentials = await inquirer.cfQuickStartQuestions();
-  console.log(credentials);
+  let githubLogin;
+  -------------------- Not Working 
+  if(credentials.github === 'YES'){
+    // let githubLogin = await githubQ.githubQuestions();
+    let token = github.getStoredGithubToken();
+    if(!token) {
+      github.setGithubCredentials()
+        .then(token => {
+          console.log(token);
+          github.registerNewToken()
+            .then(result => {
+              console.log(result);
+            });    
+        }).catch(err => console.log(err));
+    }
+    console.log(token, 'token Here');
+  }
+  ------------------------- END
+
   createDirectory(credentials.name);
   whichBuild(credentials);
   whichLicense(credentials.license);
+  console.log('credentials: ',credentials);
 
+  
 };
 
 run();
