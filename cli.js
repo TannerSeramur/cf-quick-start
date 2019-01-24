@@ -6,6 +6,8 @@ const figlet = require('figlet');
 const inquirer  = require('./lib/inquirer');
 const fs = require('fs');
 const fse = require('fs-extra');
+const dirTree = require('directory-tree');
+
 
 clear();
 console.log(chalk.white('-'));
@@ -20,13 +22,26 @@ console.log(
   )
 );
 
+
+
 const run = async () => {
   const credentials = await inquirer.cfQuickStartQuestions();
-  console.log(credentials);
+  // if(credentials.github === 'YES'){
+  //  connectRepo();
+  // };
+  let manifest = {temp: dirTree(`./templates/${credentials.build.toLowerCase()}`), vars: {port: 3000}};
+
   createDirectory(credentials.name);
   whichBuild(credentials);
   whichLicense(credentials.license);
 
+  console.log(' ');
+  console.log(chalk.white(figlet.textSync('N E X T  S T E P S : ', { font: 'short' })));
+  console.log(chalk.red(`cd ${credentials.name}`));
+  console.log(chalk.yellow(`npm i`));
+  console.log(chalk.blue(`npm start`));
+  
+  return manifest;
 };
 
 run();
@@ -40,7 +55,7 @@ function createDirectory(dir){
 
 function whichBuild(choice){
   switch(choice.build){
-  case 'Express Server':
+  case 'Express-Server':
     copyFiles(`${__dirname}/templates/express-server`, `./${choice.name}`);
     break;
   case 'API-Server':
@@ -63,9 +78,15 @@ function whichBuild(choice){
 
 function whichLicense(choice){
   switch(choice){
-  case 'MIT':
-    console.log('using MIT License');
-    break;
+    case 'MIT': 
+      // copyFiles(`${__dirname}/templates/licenses/mit`, `./${choice.name}`);
+      break;
+    case 'Apache License 2.0': 
+      // copyFiles(`${__dirname}/templates/licenses/apach20`, `./${choice.name}`);
+      break;
+    case 'ISC': 
+      // copyFiles(`${__dirname}/templates/licenses/isc`, `./${choice.name}`);
+      break;
   }
 }
 
@@ -75,4 +96,3 @@ function copyFiles(from, to){
   });
 }
 
-module.exports = {createDirectory, whichBuild};
