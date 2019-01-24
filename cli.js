@@ -55,7 +55,7 @@ function createDirectory(dir){
 function whichBuild(choice){
   console.log(choice.build, ' ⭐️');
   switch(choice.build){
-  case 'Express-Server':
+  case 'express-server':
     copyFiles(`${__dirname}/templates/express-server`, `./${choice.name}`);
     break;
   case 'API-Server':
