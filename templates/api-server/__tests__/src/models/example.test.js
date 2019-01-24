@@ -1,7 +1,7 @@
 'use strict';
 
 const rootDir = process.cwd();
-const example = require(`../../../src/models/example/example-model.js`);
+const example = require(`${rootDir}/src/models/example/example-model.js`);
 
 const supergoose = require('../supergoose.js');
 
@@ -10,7 +10,7 @@ afterAll(supergoose.stopDB);
 
 describe('Example Model', () => {
   it('can post() a new example', () => {
-    let obj = {name:'Test', trueorfalse:'T',group:'This one'};
+    let obj = {name:'Test Example'};
     return example.post(obj)
       .then(record => {
         Object.keys(obj).forEach(key =>{
@@ -20,7 +20,7 @@ describe('Example Model', () => {
   });
 
   it('can get() an example', () => {
-    let obj = {name:'Test', trueorfalse:'T',group:'This one'};
+    let obj = {name:'Test Example'};
     return example.post(obj)
       .then(record => {
         return example.get(record._id)
