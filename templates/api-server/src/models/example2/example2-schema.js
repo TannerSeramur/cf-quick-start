@@ -9,7 +9,7 @@ const example2 = mongoose.Schema({
 }, { toObject:{virtuals:true}, toJSON:{virtuals:true} });
 
 example2.virtual('example', {
-  ref: 'exampe',
+  ref: 'example',
   localField: 'name',
   foreignField: 'group',
   justOne:false,
