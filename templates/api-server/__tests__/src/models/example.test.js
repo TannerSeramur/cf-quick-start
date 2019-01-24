@@ -10,7 +10,7 @@ afterAll(supergoose.stopDB);
 
 describe('Example Model', () => {
   it('can post() a new example', () => {
-    let obj = {name:'Test Example'};
+    let obj = {name:'Test Example', description:'Test Description'};
     return example.post(obj)
       .then(record => {
         Object.keys(obj).forEach(key =>{
@@ -20,7 +20,7 @@ describe('Example Model', () => {
   });
 
   it('can get() an example', () => {
-    let obj = {name:'Test Example'};
+    let obj = {name:'Test Example', description:'Test Description'};
     return example.post(obj)
       .then(record => {
         return example.get(record._id)
