@@ -1,15 +1,20 @@
 {
-  "name": "<project name>",
+  "name": "api-server-with-package",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "lint": "eslint **/*.js",
+    "test": "jest --verbose --coverage",
+    "test-watch": "jest --watchAll --verbose --coverage",
+    "jsdoc": "jsdoc -c ./docs/config/jsdoc.config.json"
+
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "cf401-api-server": "^1.0.9"
+    "cf401-api-server": "^1.0.8"
   }
 }
