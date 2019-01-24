@@ -4,7 +4,7 @@ const Model = require('cf401-mongo');
 const schema = require('./example-schema.js');
 
 /**
- * Class representing a Player.
+ * Class representing a Template.
  * @extends Model
  */
 class Template extends Model {}
