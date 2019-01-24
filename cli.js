@@ -29,8 +29,8 @@ const run = async () => {
   const credentials = await inquirer.cfQuickStartQuestions();
   
   if(credentials.github === 'YES'){
-   githubb.createRepo(credentials.name);
-  };
+    githubb.createRepo(credentials.name, );
+  }
   let manifest = {temp: dirTree(`./templates/${credentials.build.toLowerCase()}`), vars: {port: 3000}};
 
   createDirectory(credentials.name);
@@ -58,37 +58,37 @@ function createDirectory(dir){
 function whichBuild(choice){
   switch(choice.build){
   case 'Express-Server':
-    copyFiles(`${__dirname}/templates/express-server`, `./${choice.name}`);
+    copyFiles(`${__dirname}/templates/express-server`, `${__dirname}/${choice.name}`);
     break;
   case 'API-Server':
-    copyFiles(`${__dirname}/templates/api-server`, `./${choice.name}`);
+    copyFiles(`${__dirname}/templates/api-server`, `${__dirname}/${choice.name}`);
     break;
   case 'API-Server Package':
-    copyFiles(`${__dirname}/templates/api-server-with-package`, `./${choice.name}`);
+    copyFiles(`${__dirname}/templates/api-server-with-package`, `${__dirname}/${choice.name}`);
     break;
 
   case 'React-App':
-    copyFiles(`${__dirname}/templates/react-app`, `./${choice.name}`);
+    copyFiles(`${__dirname}/templates/react-app`, `${__dirname}/${choice.name}`);
     break; 
   case 'Socket Server': 
-    copyFiles(`${__dirname}/templates/socket-server`, `./${choice.name}`);
+    copyFiles(`${__dirname}/templates/socket-server`, `${__dirname}/${choice.name}`);
     break;
   case 'Just the Config Files, Please':
-    copyFiles(`${__dirname}/templates/config-files`, `./${choice.name}`);
+    copyFiles(`${__dirname}/templates/config-files`, `${__dirname}/${choice.name}`);
   }
 }
 
 function whichLicense(choice){
   switch(choice){
-    case 'MIT': 
-      // copyFiles(`${__dirname}/templates/licenses/mit`, `./${choice.name}`);
-      break;
-    case 'Apache License 2.0': 
-      // copyFiles(`${__dirname}/templates/licenses/apach20`, `./${choice.name}`);
-      break;
-    case 'ISC': 
-      // copyFiles(`${__dirname}/templates/licenses/isc`, `./${choice.name}`);
-      break;
+  case 'MIT': 
+    // copyFiles(`${__dirname}/templates/licenses/mit`, `./${choice.name}`);
+    break;
+  case 'Apache License 2.0': 
+    // copyFiles(`${__dirname}/templates/licenses/apach20`, `./${choice.name}`);
+    break;
+  case 'ISC': 
+    // copyFiles(`${__dirname}/templates/licenses/isc`, `./${choice.name}`);
+    break;
   }
 }
 
