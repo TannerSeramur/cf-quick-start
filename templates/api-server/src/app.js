@@ -31,6 +31,7 @@ app.use(express.urlencoded({extended:true}));
 app.use('/docs', express.static('docs'));
 
 // Routes
+
 app.use(v1Router);
 
 // Catchalls
