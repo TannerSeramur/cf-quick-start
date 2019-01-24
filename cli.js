@@ -7,6 +7,7 @@ const inquirer  = require('./lib/inquirer');
 const fs = require('fs');
 const fse = require('fs-extra');
 const dirTree = require('directory-tree');
+const githubb = require('./lib/github');
 
 
 clear();
@@ -26,9 +27,10 @@ console.log(
 
 const run = async () => {
   const credentials = await inquirer.cfQuickStartQuestions();
-  // if(credentials.github === 'YES'){
-  //  connectRepo();
-  // };
+  
+  if(credentials.github === 'YES'){
+   githubb.createRepo(credentials.name);
+  };
   let manifest = {temp: dirTree(`./templates/${credentials.build.toLowerCase()}`), vars: {port: 3000}};
 
   createDirectory(credentials.name);
