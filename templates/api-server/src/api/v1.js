@@ -23,6 +23,7 @@ const swaggerDocs = require(`${cwd}/docs/config/swagger.json`);
 router.use('/api/v1/doc/', swaggerUI.serve, swaggerUI.setup(swaggerDocs));
 
 // API Routes
+// Routes are set up generically to allow for different models
 router.get('/api/v1/:model', handleGetAll);
 router.post('/api/v1/:model', handlePost);
 
