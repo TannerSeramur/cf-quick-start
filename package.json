@@ -7,7 +7,10 @@
     "cf-quick-start": "./cli.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint **/*.js",
+    "test": "jest --verbose --coverage",
+    "test-watch": "jest --watchAll --verbose --coverage",
+    "jsdoc": "jsdoc -c ./docs/config/jsdoc.config.json"
   },
   "author": "Tanner, Ryan, Becca, Jared",
   "license": "MIT",
@@ -23,6 +26,7 @@
     "fs-extra": "^7.0.1",
     "github": "^14.0.0",
     "inquirer": "^6.2.1",
+    "jest": "^23.6.0",
     "lodash": "^4.17.11",
     "minimatch": "^3.0.4",
     "minimist": "^1.2.0",

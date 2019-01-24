@@ -61,12 +61,18 @@ function whichBuild(choice){
   case 'API-Server':
     copyFiles(`${__dirname}/templates/api-server`, `./${choice.name}`);
     break;
+  case 'API-Server Package':
+    copyFiles(`${__dirname}/templates/api-server-with-package`, `./${choice.name}`);
+    break;
+
   case 'React-App':
     copyFiles(`${__dirname}/templates/react-app`, `./${choice.name}`);
     break; 
   case 'Socket Server': 
-    copyFiles(`${__dirname}/templates/socket- server`, `./${choice.name}`);
+    copyFiles(`${__dirname}/templates/socket-server`, `./${choice.name}`);
     break;
+  case 'Just the Config Files, Please':
+    copyFiles(`${__dirname}/templates/config-files`, `./${choice.name}`);
   }
 }
 
@@ -89,3 +95,4 @@ function copyFiles(from, to){
     if (err) throw err;
   });
 }
+
