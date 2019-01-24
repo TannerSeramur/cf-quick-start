@@ -7,6 +7,6 @@ const mongooseOptions = {
   useNewUrlParser:true,
   useCreateIndex: true,
 };
-mongoose.connect(process.env.MONGODB_URI, mongooseOptions);
+mongoose.connect(process.env.MONGODB_URI || `mongodb://localhost:27017/template`, mongooseOptions);
 
-require('./src/app.js').start(process.env.PORT);
+require('./src/app.js').start(process.env.PORT || 3000);
