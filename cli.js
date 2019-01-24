@@ -6,7 +6,6 @@ const figlet = require('figlet');
 const inquirer  = require('./lib/inquirer');
 const fs = require('fs');
 const fse = require('fs-extra');
-const dirTree = require('directory-tree');
 const githubb = require('./lib/github');
 
 
@@ -31,7 +30,6 @@ const run = async () => {
   if(credentials.github === 'YES'){
     githubb.createRepo(credentials.name, );
   }
-  let manifest = {temp: dirTree(`./templates/${credentials.build.toLowerCase()}`), vars: {port: 3000}};
 
   createDirectory(credentials.name);
   whichBuild(credentials);
@@ -43,7 +41,6 @@ const run = async () => {
   // console.log(chalk.yellow(`npm i`));
   // console.log(chalk.blue(`npm start`));
   
-  return manifest;
 };
 
 run();
@@ -56,25 +53,26 @@ function createDirectory(dir){
 }
 
 function whichBuild(choice){
+  console.log(choice.build, ' ⭐️');
   switch(choice.build){
   case 'Express-Server':
-    copyFiles(`${__dirname}/templates/express-server`, `${__dirname}/${choice.name}`);
+    copyFiles(`${__dirname}/templates/express-server`, `./${choice.name}`);
     break;
   case 'API-Server':
-    copyFiles(`${__dirname}/templates/api-server`, `${__dirname}/${choice.name}`);
+    copyFiles(`${__dirname}/templates/api-server`, `./${choice.name}`);
     break;
   case 'API-Server Package':
-    copyFiles(`${__dirname}/templates/api-server-with-package`, `${__dirname}/${choice.name}`);
+    copyFiles(`${__dirname}/templates/api-server-with-package`, `./${choice.name}`);
     break;
 
   case 'React-App':
-    copyFiles(`${__dirname}/templates/react-app`, `${__dirname}/${choice.name}`);
+    copyFiles(`${__dirname}/templates/react-app`, `./${choice.name}`);
     break; 
   case 'Socket Server': 
-    copyFiles(`${__dirname}/templates/socket-server`, `${__dirname}/${choice.name}`);
+    copyFiles(`${__dirname}/templates/socket-server`, `./${choice.name}`);
     break;
   case 'Just the Config Files, Please':
-    copyFiles(`${__dirname}/templates/config-files`, `${__dirname}/${choice.name}`);
+    copyFiles(`${__dirname}/templates/config-files`, `./${choice.name}`);
   }
 }
 
