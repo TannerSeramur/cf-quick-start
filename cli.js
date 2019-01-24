@@ -37,11 +37,11 @@ const run = async () => {
   whichBuild(credentials);
   whichLicense(credentials.license);
 
-  console.log(' ');
-  console.log(chalk.white(figlet.textSync('N E X T  S T E P S : ', { font: 'short' })));
-  console.log(chalk.red(`cd ${credentials.name}`));
-  console.log(chalk.yellow(`npm i`));
-  console.log(chalk.blue(`npm start`));
+  // console.log(' ');
+  // console.log(chalk.white(figlet.textSync('N E X T  S T E P S : ', { font: 'short' })));
+  // console.log(chalk.red(`cd ${credentials.name}`));
+  // console.log(chalk.yellow(`npm i`));
+  // console.log(chalk.blue(`npm start`));
   
   return manifest;
 };
