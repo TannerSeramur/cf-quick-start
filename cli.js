@@ -58,23 +58,23 @@ function createDirectory(dir){
 function whichBuild(choice){
   switch(choice.build){
   case 'Express-Server':
-    copyFiles(`${__dirname}/templates/express-server`, `./${choice.name}`);
+    copyFiles(`${__dirname}/templates/express-server`, `${__dirname}/${choice.name}`);
     break;
   case 'API-Server':
-    copyFiles(`${__dirname}/templates/api-server`, `./${choice.name}`);
+    copyFiles(`${__dirname}/templates/api-server`, `${__dirname}/${choice.name}`);
     break;
   case 'API-Server Package':
-    copyFiles(`${__dirname}/templates/api-server-with-package`, `./${choice.name}`);
+    copyFiles(`${__dirname}/templates/api-server-with-package`, `${__dirname}/${choice.name}`);
     break;
 
   case 'React-App':
-    copyFiles(`${__dirname}/templates/react-app`, `./${choice.name}`);
+    copyFiles(`${__dirname}/templates/react-app`, `${__dirname}/${choice.name}`);
     break; 
   case 'Socket Server': 
-    copyFiles(`${__dirname}/templates/socket-server`, `./${choice.name}`);
+    copyFiles(`${__dirname}/templates/socket-server`, `${__dirname}/${choice.name}`);
     break;
   case 'Just the Config Files, Please':
-    copyFiles(`${__dirname}/templates/config-files`, `./${choice.name}`);
+    copyFiles(`${__dirname}/templates/config-files`, `${__dirname}/${choice.name}`);
   }
 }
 
