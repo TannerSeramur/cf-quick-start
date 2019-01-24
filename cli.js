@@ -28,7 +28,7 @@ const run = async () => {
   const credentials = await inquirer.cfQuickStartQuestions();
   
   if(credentials.github === 'YES'){
-    githubb.createRepo(credentials.name, );
+    githubb.createRepo(credentials.name, credentials.build);
   }
 
   createDirectory(credentials.name);
