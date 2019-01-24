@@ -1,6 +1,6 @@
 {
   "name": "cf-quick-start",
-  "version": "1.0.6",
+  "version": "1.0.8",
   "description": "helper tool for create javascript apps",
   "main": "cli.js",
   "bin": {
@@ -20,6 +20,7 @@
     "clear": "^0.1.0",
     "clui": "^0.3.6",
     "configstore": "^4.0.0",
+    "curl-request": "^1.1.1",
     "directory-tree": "^2.2.1",
     "eslint": "^5.12.1",
     "figlet": "^1.2.1",
@@ -31,6 +32,7 @@
     "minimatch": "^3.0.4",
     "minimist": "^1.2.0",
     "simple-git": "^1.107.0",
+    "superagent": "^4.1.0",
     "touch": "^3.1.0"
   },
   "files": [

@@ -7,6 +7,7 @@ const inquirer  = require('./lib/inquirer');
 const fs = require('fs');
 const fse = require('fs-extra');
 const dirTree = require('directory-tree');
+const githubb = require('./lib/github');
 
 
 clear();
@@ -26,20 +27,21 @@ console.log(
 
 const run = async () => {
   const credentials = await inquirer.cfQuickStartQuestions();
-  // if(credentials.github === 'YES'){
-  //  connectRepo();
-  // };
+  
+  if(credentials.github === 'YES'){
+   githubb.createRepo(credentials.name);
+  };
   let manifest = {temp: dirTree(`./templates/${credentials.build.toLowerCase()}`), vars: {port: 3000}};
 
   createDirectory(credentials.name);
   whichBuild(credentials);
   whichLicense(credentials.license);
 
-  console.log(' ');
-  console.log(chalk.white(figlet.textSync('N E X T  S T E P S : ', { font: 'short' })));
-  console.log(chalk.red(`cd ${credentials.name}`));
-  console.log(chalk.yellow(`npm i`));
-  console.log(chalk.blue(`npm start`));
+  // console.log(' ');
+  // console.log(chalk.white(figlet.textSync('N E X T  S T E P S : ', { font: 'short' })));
+  // console.log(chalk.red(`cd ${credentials.name}`));
+  // console.log(chalk.yellow(`npm i`));
+  // console.log(chalk.blue(`npm start`));
   
   return manifest;
 };
