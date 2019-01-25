@@ -13,7 +13,7 @@ npm i -g cf-quick-start
 cf-quick-start
 ```
 
-3. Select the project you'd like to make, name it, choose a license, and decide if you'd like to create a repo.
+3. Select the project you'd like to make, name it, choose a license, and decide if you'd like to create a GitHub repo.
 
 4. Navigate to your new files and `npm i`
 
