@@ -29,6 +29,8 @@ const run = async () => {
   }
 
   createDirectory(credentials.name);
+  process.chdir(credentials.name);
+
   whichBuild(credentials);
   whichLicense(credentials.license);
 };
