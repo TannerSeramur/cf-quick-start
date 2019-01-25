@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
+    "link": "node linker.js",
     "lint": "eslint **/*.js",
     "test": "jest --verbose --coverage",
     "test-watch": "jest --watchAll --verbose --coverage",
@@ -15,6 +16,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "cf401-api-server": "^1.0.8"
+    "cf401-api-server": "^1.1.1"
   }
 }
