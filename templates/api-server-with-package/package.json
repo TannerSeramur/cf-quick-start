@@ -16,6 +16,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "cf401-api-server": "^1.1.0"
+    "cf401-api-server": "^1.1.1"
   }
 }
