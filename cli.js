@@ -8,7 +8,6 @@ const fs = require('fs');
 const fse = require('fs-extra');
 const githubb = require('./lib/github');
 
-
 clear();
 console.log(chalk.white('-'));
 console.log(
@@ -21,8 +20,6 @@ console.log(
     figlet.textSync('Quick Start', { horizontalLayout: 'full' })
   )
 );
-
-
 
 const run = async () => {
   const credentials = await inquirer.cfQuickStartQuestions();
@@ -56,7 +53,6 @@ function whichBuild(choice){
   case 'API-Server Package':
     copyFiles(`${__dirname}/templates/api-server-with-package`, `./${choice.name}`);
     break;
-
   case 'React-App':
     copyFiles(`${__dirname}/templates/react-app`, `./${choice.name}`);
     break; 
@@ -66,20 +62,19 @@ function whichBuild(choice){
   case 'Just the Config Files, Please':
     copyFiles(`${__dirname}/templates/config-files`, `./${choice.name}`);
   }
+  return `copied ${choice}`;
 }
 
 function whichLicense(choice){
   switch(choice){
   case 'MIT': 
-    // copyFiles(`${__dirname}/templates/licenses/mit`, `./${choice.name}`);
+    copyFiles(`${__dirname}/templates/licenses/mit`, `./${choice.name}`);
     break;
   case 'Apache License 2.0': 
-    // copyFiles(`${__dirname}/templates/licenses/apach20`, `./${choice.name}`);
-    break;
-  case 'ISC': 
-    // copyFiles(`${__dirname}/templates/licenses/isc`, `./${choice.name}`);
+    copyFiles(`${__dirname}/templates/licenses/apach20`, `./${choice.name}`);
     break;
   }
+  return `copied ${choice} license`;
 }
 
 function copyFiles(from, to){
@@ -88,3 +83,4 @@ function copyFiles(from, to){
   });
 }
 
+module.exports = {createDirectory, whichBuild, whichLicense};
