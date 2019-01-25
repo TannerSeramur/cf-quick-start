@@ -17,7 +17,9 @@ cf-quick-start
 
 3. Select the project you'd like to make, name it, choose a license, and decide if you'd like to create a repo.
 
-4. Get coding!
+4. Navigate to your new files and `npm i`
+
+5. Get coding!
 
 ## About the Package
 - This package currently provides options to create the following projects:
@@ -26,7 +28,13 @@ cf-quick-start
   - An **express server** with full starter code provided in your project
   - A suite of **config files** to get you ready to start on a backend JS project of your choosing
   - A **react-app** that provides starter code to create a React-based project
-  - A **socket-server** with full starter code
+
+## Running your project
+**API-Server**
+- Run `npm start` to launch the server
+- Open a browser and go to `localhost:3000/api/v1/example`. You should see the results for all the items in that database collection (it may be 0 when you get started)
+- A suite of tests is included in the project. To check them, run `npm test`
+- To add new models, add a new folder to models folder and name it after your route
 
 ## About the creators
 This package was created by Ryan Gallaway, Becca Lee, Jared Pattison, and Tanner Seramur as a midterm project for Code Fellows JavaScript 401d28. Some of the template code was provided by their instructor, John Cokos.
