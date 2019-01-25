@@ -8,7 +8,6 @@ const fs = require('fs');
 const fse = require('fs-extra');
 const githubb = require('./lib/github');
 
-
 clear();
 console.log(chalk.white('-'));
 console.log(
@@ -22,25 +21,16 @@ console.log(
   )
 );
 
-
-
 const run = async () => {
   const credentials = await inquirer.cfQuickStartQuestions();
   
   if(credentials.github === 'YES'){
-    githubb.createRepo(credentials.name, );
+    githubb.createRepo(credentials.name, credentials.build);
   }
 
   createDirectory(credentials.name);
   whichBuild(credentials);
   whichLicense(credentials.license);
-
-  // console.log(' ');
-  // console.log(chalk.white(figlet.textSync('N E X T  S T E P S : ', { font: 'short' })));
-  // console.log(chalk.red(`cd ${credentials.name}`));
-  // console.log(chalk.yellow(`npm i`));
-  // console.log(chalk.blue(`npm start`));
-  
 };
 
 run();
@@ -53,9 +43,8 @@ function createDirectory(dir){
 }
 
 function whichBuild(choice){
-  console.log(choice.build, ' ⭐️');
   switch(choice.build){
-  case 'Express-Server':
+  case 'express-server':
     copyFiles(`${__dirname}/templates/express-server`, `./${choice.name}`);
     break;
   case 'API-Server':
@@ -64,7 +53,6 @@ function whichBuild(choice){
   case 'API-Server Package':
     copyFiles(`${__dirname}/templates/api-server-with-package`, `./${choice.name}`);
     break;
-
   case 'React-App':
     copyFiles(`${__dirname}/templates/react-app`, `./${choice.name}`);
     break; 
@@ -74,20 +62,19 @@ function whichBuild(choice){
   case 'Just the Config Files, Please':
     copyFiles(`${__dirname}/templates/config-files`, `./${choice.name}`);
   }
+  return `copied ${choice}`;
 }
 
 function whichLicense(choice){
   switch(choice){
   case 'MIT': 
-    // copyFiles(`${__dirname}/templates/licenses/mit`, `./${choice.name}`);
+    copyFiles(`${__dirname}/templates/licenses/mit`, `./${choice.name}`);
     break;
   case 'Apache License 2.0': 
-    // copyFiles(`${__dirname}/templates/licenses/apach20`, `./${choice.name}`);
-    break;
-  case 'ISC': 
-    // copyFiles(`${__dirname}/templates/licenses/isc`, `./${choice.name}`);
+    copyFiles(`${__dirname}/templates/licenses/apach20`, `./${choice.name}`);
     break;
   }
+  return `copied ${choice} license`;
 }
 
 function copyFiles(from, to){
@@ -96,3 +83,4 @@ function copyFiles(from, to){
   });
 }
 
+module.exports = {createDirectory, whichBuild, whichLicense};
