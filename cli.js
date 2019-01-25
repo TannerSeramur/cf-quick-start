@@ -34,13 +34,6 @@ const run = async () => {
   createDirectory(credentials.name);
   whichBuild(credentials);
   whichLicense(credentials.license);
-
-  // console.log(' ');
-  // console.log(chalk.white(figlet.textSync('N E X T  S T E P S : ', { font: 'short' })));
-  // console.log(chalk.red(`cd ${credentials.name}`));
-  // console.log(chalk.yellow(`npm i`));
-  // console.log(chalk.blue(`npm start`));
-  
 };
 
 run();
@@ -53,7 +46,6 @@ function createDirectory(dir){
 }
 
 function whichBuild(choice){
-  console.log(choice.build, ' ⭐️');
   switch(choice.build){
   case 'express-server':
     copyFiles(`${__dirname}/templates/express-server`, `./${choice.name}`);
