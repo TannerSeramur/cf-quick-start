@@ -1,6 +1,6 @@
 # cf-quick-start
 
-`cf-quick-start` is a CLI-based project creation package that will provide you with flushed-out, functional starter code in just a few easy steps.
+`cf-quick-start` is a CLI-based project creation package that will provide you with fleshed-out, functional starter code in just a few easy steps.
 
 # Installation and Use
 1. Install the package globally
