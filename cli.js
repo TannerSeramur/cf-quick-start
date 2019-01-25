@@ -29,10 +29,8 @@ const run = async () => {
   }
 
   createDirectory(credentials.name);
-  process.chdir(credentials.name);
-
   whichBuild(credentials);
-  whichLicense(credentials.license, credentials.build);
+  whichLicense(credentials.license);
 };
 
 run();
@@ -67,13 +65,13 @@ function whichBuild(choice){
   return `copied ${choice}`;
 }
 
-function whichLicense(choice, build){
+function whichLicense(choice){
   switch(choice){
   case 'MIT': 
-    copyFiles(`${__dirname}/templates/licenses/mit`, `./${build}/${choice}`);
+    copyFiles(`${__dirname}/templates/licenses/mit`, `./${choice.name}`);
     break;
   case 'Apache License 2.0': 
-    copyFiles(`${__dirname}/templates/licenses/apach20`, `./${build}/${choice}`);
+    copyFiles(`${__dirname}/templates/licenses/apach20`, `./${choice.name}`);
     break;
   }
   return `copied ${choice} license`;
