@@ -27,12 +27,9 @@ const run = async () => {
   if(credentials.github === 'YES'){
     githubb.createRepo(credentials.name, credentials.build);
   }
-
   createDirectory(credentials.name);
-  process.chdir(credentials.name);
-
-  whichBuild(credentials);
-  whichLicense(credentials.license, credentials.build);
+  whichBuild(credentials, credentials.name);
+  whichLicense(credentials.license, credentials.name);
 };
 
 run();
@@ -47,7 +44,7 @@ function createDirectory(dir){
 function whichBuild(choice){
   switch(choice.build){
   case 'express-server':
-    copyFiles(`${__dirname}/templates/express-server`, `./${choice.name}`);
+    copyFiles(`${__dirname}/templates/express-server`, `./${choice.name}`, choice.name);
     break;
   case 'API-Server':
     copyFiles(`${__dirname}/templates/api-server`, `./${choice.name}`);
@@ -63,26 +60,40 @@ function whichBuild(choice){
     break;
   case 'Just the Config Files, Please':
     copyFiles(`${__dirname}/templates/config-files`, `./${choice.name}`);
+    break;
   }
+  
   return `copied ${choice}`;
 }
 
-function whichLicense(choice, build){
+function whichLicense(choice, name){
   switch(choice){
   case 'MIT': 
-    copyFiles(`${__dirname}/templates/licenses/mit`, `./${build}/${choice}`);
+    copyFiles(`${__dirname}/templates/licenses/mit`, `./${name}/${choice}`);
     break;
   case 'Apache License 2.0': 
-    copyFiles(`${__dirname}/templates/licenses/apach20`, `./${build}/${choice}`);
+    copyFiles(`${__dirname}/templates/licenses/apach20`, `./${name}/${choice}`);
     break;
   }
+  
   return `copied ${choice} license`;
 }
 
-function copyFiles(from, to){
-  fse.copy(from, to, (err) => {
-    if (err) throw err;
-  });
+function copyFiles(from, to, name){
+  fse.copy(from, to)
+    .then(() => {
+      console.log(name);
+      process.chdir(`./${name}`);
+      console.log('hit 🔥');
+    })
+    .catch(err => console.error(err));
 }
+
+// fse.copy(from, to, name)
+//   .then(name => {
+//     process.chdir(name);
+//     console.log('hit 🔥');
+//   }).catch(err => console.log(err));
+
 
 module.exports = {createDirectory, whichBuild, whichLicense};
